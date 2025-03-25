@@ -20,7 +20,7 @@ module Commands where
             path = rmlast $ last fullPaths
         if ((snd concat) /= [])
             then 
-                if ((areAllFilesInFS (rmlast fullPaths) fs) && (isPathInFS path fs) && (not (isFileInFs (last fullPaths) fs)))
+                if ((areAllFilesInFS (rmlast fullPaths) fs || (rmlast fullPaths) == []) && (isPathInFS path fs) && (not (isFileInFs (last fullPaths) fs)))
                     then do
                         let f = File (last (last fullPaths))
                         insertSubTree fs f path 
